@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = "/Android-Testing-Java/demo/src/test/java/cucumber/features",
-    glue = "cucumber.stepDef",
+    glue = "cucumber.PF",
     tags = "@All",
     plugin = {"html:target/HTML_report.html"}
 )
