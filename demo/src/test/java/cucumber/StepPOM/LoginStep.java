@@ -1,4 +1,4 @@
-package cucumber.POM;
+package cucumber.StepPOM;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -7,17 +7,16 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import config.env;
-import cucumber.mobilePage.IsiFormPage;
+import cucumber.mobilePage.LoginPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class IsiFormStep extends env {
+public class LoginStep extends env {
 
-
-    @Given("User berhasil Login")
-    public void user_berhasil_login() throws MalformedURLException {
+    @Given("Buka Aplikasi")
+    public void buka_aplikasi() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "sdk_gphone_x86");
         capabilities.setCapability("platformName", "Android");
@@ -26,35 +25,41 @@ public class IsiFormStep extends env {
         capabilities.setCapability("app", System.getProperty("user.dir")+"/src/test/java/apk/testing-app.apk"); //set apk file directory
         capabilities.setCapability("autoGrantPermissions", true);
         capabilities.setCapability("autoAcceptAlerts", true);
-        capabilities.setCapability("noReset", true); 
+        // capabilities.setCapability("noReset", true); 
 
         URL url = new URL(baseUrl);
         driver = new AndroidDriver(url,capabilities); //open app
 
         //waiting
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    }
+    @When("Input Data")
+    public void input_data() {
+        
+        LoginPage login = new LoginPage(driver);
+        login.inputData("user", "user123");
+    }
+    @When("Klik Tombol Login")
+    public void klik_tombol_login() {
+        LoginPage login = new LoginPage(driver);
+        login.klikLogin();
+    }
+    @Then("User masuk homepage")
+    public void user_masuk_homepage() {
+        LoginPage login = new LoginPage(driver);
+        login.verifySukses();
+        driver.quit();
+    }
 
-        IsiFormPage isiForm = new IsiFormPage(driver);
-        isiForm.login("user", "user123");
+    @When("Input Data Salah")
+    public void input_data_salah() {
+        LoginPage login = new LoginPage(driver);
+        login.inputData("salah", "user123");
     }
-    @When("User klik button Isi Form")
-    public void user_klik_button_isi_form() {
-        IsiFormPage isiForm = new IsiFormPage(driver);
-        isiForm.klikBtnIsi();
-    }
-    @When("User isi data form")
-    public void user_isi_data_form() {
-        IsiFormPage isiForm = new IsiFormPage(driver);
-        isiForm.isiForm("test", "021545", "test", "Jl.Test", "12014");
-    }
-    @When("User klik button Submit")
-    public void user_klik_button_submit() {
-        IsiFormPage isiForm = new IsiFormPage(driver);
-        isiForm.klikSubmit();
-    }
-    @Then("User berhasil submit form")
-    public void user_berhasil_submit_form() {
-        IsiFormPage isiForm = new IsiFormPage(driver);
-        isiForm.verify();
+    @Then("User dapat alert")
+    public void user_dapat_alert() {
+        LoginPage login = new LoginPage(driver);
+        login.verifyGagal();
+        driver.quit();
     }
 }

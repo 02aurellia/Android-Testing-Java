@@ -1,19 +1,13 @@
-package cucumber.StepDef;
+package cucumber.StepPF;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.interactions.Pause;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import config.env;
+import cucumber.mobilePF.LoginPF;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -41,31 +35,29 @@ public class LoginStep extends env {
     }
     @When("Input Data")
     public void input_data() {
-        driver.findElement(By.id("com.example.testingapps:id/user")).sendKeys("user");
-        driver.findElement(By.id("com.example.testingapps:id/sandi")).sendKeys("user123");
+        LoginPF login = new LoginPF(driver);
+        login.inputData("user", "user123");
     }
     @When("Klik Tombol Login")
     public void klik_tombol_login() {
-        driver.findElement(By.id("com.example.testingapps:id/btnlogin")).click();
+        LoginPF login = new LoginPF(driver);
+        login.klikLogin();
     }
     @Then("User masuk homepage")
     public void user_masuk_homepage() {
-        driver.findElement(By.id("com.example.testingapps:id/btnIsi")).isDisplayed();
+        LoginPF login = new LoginPF(driver);
+        login.verifySukses();
         driver.quit();
     }
-
     @When("Input Data Salah")
     public void input_data_salah() {
-        driver.findElement(By.id("com.example.testingapps:id/user")).sendKeys("salah");
-        driver.findElement(By.id("com.example.testingapps:id/sandi")).sendKeys("user123");
+        LoginPF login = new LoginPF(driver);
+        login.inputData("salah", "user123");
     }
     @Then("User dapat alert")
     public void user_dapat_alert() {
-        // Thread.sleep(3000);
-        // Alert alert = driver.switchTo().alert();
-        // String alertText = alert.getText();
-        // System.out.println("Alert Text: " + alertText);
-        driver.findElement(By.id("com.example.testingapps:id/btnlogin")).isDisplayed();
+        LoginPF login = new LoginPF(driver);
+        login.verifyGagal();
         driver.quit();
     }
 }
