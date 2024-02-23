@@ -1,4 +1,4 @@
-package cucumber.StepPOM;
+package cucumber.StepPF;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import config.env;
-import cucumber.mobilePage.ListFormPage;
+import cucumber.mobilePF.ListFormPF;
 import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -36,53 +36,53 @@ public class ListFormStep extends env{
     
     @When("User klik salah satu List")
     public void user_klik_salah_satu_list() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.pilihData();
     }
     @When("User isi ulang data")
     public void user_isi_ulang_data() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.isiData("test ubah data");
     }
     @When("User klik button Ubah")
     public void user_klik_button_ubah() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.klikSubmit();
     }
     @Then("Data berhasil diubah")
     public void data_berhasil_diubah() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.verify();
     }
 
     @When("User klik button Batal")
     public void user_klik_button_batal() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.klikBatal();
     }
     @Then("User kembali ke page List Form")
     public void user_kembali_ke_page_list_form() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.verify();
     }
 
     @When("User klik button Hapus")
     public void user_klik_button_hapus() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.klikHapus();
     }
 
     @Then("User berhasil menghapus data")
     public void user_berhasil_menghapus_data() {
-        ListFormPage listPage = new ListFormPage(driver);
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.verify();
         
         driver.quit();
     }
 
     @Then("User melihat detail data")
-    public void user_melihat_detail_data() {
-        ListFormPage listPage = new ListFormPage(driver);
+    public void user_melihat_detail_data() throws InterruptedException {
+        ListFormPF listPage = new ListFormPF(driver);
         listPage.lihatData();
     }
 }

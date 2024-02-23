@@ -32,9 +32,14 @@ public class ListFormPage {
                 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         }
 
+        public void lihatData() {
+                driver.findElement(data1).click();
+                driver.navigate().back();
+        }
+
         public void isiData(String name) {
                 driver.findElement(btnEdit).click();
-                
+
                 var el2 = driver.findElement(nama);
                 el2.clear();
                 el2.sendKeys(name);

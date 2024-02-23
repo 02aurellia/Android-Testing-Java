@@ -84,7 +84,7 @@ public class ListFormStep extends env{
     @Then("Data berhasil diubah")
     public void data_berhasil_diubah() {
         driver.findElement(By.id("com.example.testingapps:id/data_view")).isDisplayed();
-        driver.quit();
+        // driver.quit();
     }
 
     @When("User klik button Batal")
@@ -95,7 +95,7 @@ public class ListFormStep extends env{
     @Then("User kembali ke page List Form")
     public void user_kembali_ke_page_list_form() {
         driver.findElement(By.id("com.example.testingapps:id/data_view")).isDisplayed();
-        driver.quit();
+        // driver.quit();
     }
 
     @When("User klik button Hapus")
@@ -106,6 +106,14 @@ public class ListFormStep extends env{
     @Then("User berhasil menghapus data")
     public void user_berhasil_menghapus_data() {
         driver.findElement(By.id("com.example.testingapps:id/data_view")).isDisplayed();
-        driver.quit();
+        // driver.quit();
+    }
+
+    @Then("User melihat detail data")
+    public void user_melihat_detail_data() {
+        driver.findElement(By.id("android:id/text1")).click();
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        driver.navigate().back();
+        // driver.quit();
     }
 }
