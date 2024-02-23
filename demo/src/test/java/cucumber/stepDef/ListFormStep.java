@@ -1,4 +1,4 @@
-package cucumber.StepDef;
+package cucumber.stepDef;
 
 import java.net.MalformedURLException;
 import java.net.URL;
