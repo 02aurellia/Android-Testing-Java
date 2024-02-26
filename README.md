@@ -1,15 +1,15 @@
 # QA Engineer Portfolio
 
 ## Introduction
-Welcome to my QA Engineer portfolio! I am Aurellia Az Zahra Ugan, a passionate QA engineer with expertise in Selenium Java.
+Welcome to my QA Engineer portfolio! I am Aurellia Az Zahra Ugan, a passionate QA engineer with expertise in Cucumber Java.
 
 ## Projects
 
-### Magento: E-commerce Website Testing
+### Magento: Mobile Testing
 
 ### Overview
 
-This project focuses on the comprehensive testing of an e-commerce website with the goal of ensuring a seamless and error-free online shopping experience for end-users. The primary objectives are to identify and address potential defects, verify the correct functionality of critical features, and contribute to the overall enhancement of the website's quality.
+This project focuses on the comprehensive testing of an testing with the goal of ensuring a seamless and error-free CRUD form for end-users. The primary objectives are to identify and address potential defects, verify the correct functionality of critical features, and contribute to the overall enhancement of the mobile app quality.
 
 ### Project Details
 
@@ -19,25 +19,25 @@ As a QA engineer, my responsibilities included test planning, test case developm
 
 #### Technologies Used
 
-- **Testing Framework:** Selenium WebDriver
+- **Testing Framework:** UIAutomator framework (or Selendroid)
 - **Bug Tracking:** Google Sheet
 - **Test Management:** Google Sheet
-- **Others:** Browser Developer Tools for debugging
+- **Others:** Appium Locator to Locate Element
 
 #### Testing Scope
 
 The testing scope encompassed critical functionalities such as:
-- User registration and login
-- Product browsing and selection
-- Shopping cart and checkout process
-- Payment transactions
-- Account management
+- User login
+- Input Form
+- Edit Submitted Form
+- Delete Submitted Form
+- See the Details of Submitted Form
 
 ### Testing Approach
 
 #### Automation Testing
 
-Implemented Selenium WebDriver scripts for automating repetitive test scenarios, improving testing efficiency and coverage.
+Implemented Cucumber Page Object Models and Page Factory scripts for automating repetitive test scenarios, improving testing efficiency and coverage.
 
 #### Test Cases
 
@@ -49,11 +49,11 @@ Utilized Google Sheet for logging and tracking identified defects, collaborating
 
 ### Screenshots or Demo
 
-![](https://github.com/02aurellia/QA-Portfolio/blob/main/Home%20Page.gif)
+![](https://github.com/02aurellia/Android-Testing-Java/blob/main/Demo.gif)
 
 ## Skills
 - Manual Testing
-- Automated Testing (Selenium Java and Katalon)
+- Mobile Automated Testing (Cucumber Java and Katalon)
 - Test Planning and Execution
 
 ## Contact
