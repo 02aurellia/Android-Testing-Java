@@ -24,6 +24,9 @@ public class LoginPF {
     @FindBy(id = "com.example.testingapps:id/btnIsi")
     WebElement btnIsi;
 
+    @FindBy(xpath = "(//android.widget.Toast)")
+    WebElement toastMsg;
+
     public LoginPF(AndroidDriver driver) {
         this.driver = driver;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver,30),this);
@@ -39,12 +42,28 @@ public class LoginPF {
     }
 
     public void verifySukses() {
+        // String message = toastMsg.getText();
+        // System.out.println(message);
+        // if (message.contains("Login Success")) {
+        //     System.out.println("Verify Berhasil");
+        // } 
+        // else {
+        //     System.out.println("Verify Tidak Berhasil");
+        // }
         btnIsi.isDisplayed();
         driver.quit();
     }
 
     public void verifyGagal() {
-        btnlogin.isDisplayed();
-        driver.quit();
+        String message = toastMsg.getText();
+        // System.out.println(message);
+        if (message.contains("Failed Login")) {
+            System.out.println("Verify " + message + " berhasil");
+            driver.quit();  
+        } 
+        else {
+            System.out.println("Verify " + message + " tidak berhasil");
+        }
+        // btnlogin.isDisplayed();
     }
 }

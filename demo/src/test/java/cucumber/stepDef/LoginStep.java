@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import config.env;
@@ -59,7 +60,15 @@ public class LoginStep extends env {
         // Alert alert = driver.switchTo().alert();
         // String alertText = alert.getText();
         // System.out.println("Alert Text: " + alertText);
-        driver.findElement(By.id("com.example.testingapps:id/btnlogin")).isDisplayed();
-        driver.quit();
+        WebElement toastMsg = driver.findElement(By.xpath("(//android.widget.Toast)"));
+        String message = toastMsg.getText();
+        // System.out.println(message);
+        if (message.contains("Failed Login")) {
+            System.out.println("Verify " + message + " berhasil");
+            driver.quit();  
+        } 
+        else {
+            System.out.println("Verify " + message + " tidak berhasil");
+        }
     }
 }

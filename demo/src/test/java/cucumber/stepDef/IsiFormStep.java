@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import config.env;
@@ -61,6 +62,9 @@ public class IsiFormStep extends env {
     }
     @Then("User berhasil submit form")
     public void user_berhasil_submit_form() {
+        WebElement toastMsg = driver.findElement(By.xpath("(//android.widget.Toast)"));
+        String message = toastMsg.getText();
+        System.out.println(message);
         driver.findElement(By.id("com.example.testingapps:id/data_view")).isDisplayed();
         driver.quit();
     }

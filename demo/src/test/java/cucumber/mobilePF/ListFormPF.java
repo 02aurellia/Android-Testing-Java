@@ -43,6 +43,9 @@ public class ListFormPF {
         @FindBy(id = "com.example.testingapps:id/jk_pr")
         WebElement jk_pr;
 
+        @FindBy(xpath = "(//android.widget.Toast)")
+        WebElement toastMsg;
+
         public ListFormPF(AndroidDriver driver) {
                 this.driver = driver;
                 PageFactory.initElements(new AjaxElementLocatorFactory(driver,30),this);
@@ -73,6 +76,17 @@ public class ListFormPF {
 
         public void verify() {
                 data_view.isDisplayed();
+        }
+
+        public void verifydel() {
+                String message = toastMsg.getText();
+                if (message.contains("Data berhasil di hapus")) {
+                        System.out.println("Verify " + message + " berhasil");
+                        driver.quit();  
+                } 
+                else {
+                        System.out.println("Verify " + message + " tidak berhasil");
+                }
         }
 
         public void klikBatal() {

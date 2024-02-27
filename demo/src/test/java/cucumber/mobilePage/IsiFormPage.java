@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.android.AndroidDriver;
 
@@ -24,6 +25,7 @@ public class IsiFormPage {
         By jk_pr = By.id("com.example.testingapps:id/jk_pr");
         By btnSubmit = By.id("com.example.testingapps:id/btnSubmit");
         By data_view = By.id("com.example.testingapps:id/data_view");
+        By toastMsg = By.xpath("(//android.widget.Toast)");
 
         public IsiFormPage(AndroidDriver driver) {
                 this.driver = driver;
@@ -58,6 +60,9 @@ public class IsiFormPage {
         }
 
         public void verify(){
+                WebElement toast = driver.findElement(toastMsg);
+                String message = toast.getText();
+                System.out.println(message);
                 driver.findElement(data_view).isDisplayed();
                 driver.quit();
         }

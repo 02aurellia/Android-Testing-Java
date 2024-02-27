@@ -60,10 +60,11 @@ public class ListFormStep extends env{
         ListFormPage listPage = new ListFormPage(driver);
         listPage.klikBatal();
     }
+
     @Then("User kembali ke page List Form")
     public void user_kembali_ke_page_list_form() {
         ListFormPage listPage = new ListFormPage(driver);
-        listPage.verify();
+        listPage.verifyback();
     }
 
     @When("User klik button Hapus")
@@ -75,9 +76,7 @@ public class ListFormStep extends env{
     @Then("User berhasil menghapus data")
     public void user_berhasil_menghapus_data() {
         ListFormPage listPage = new ListFormPage(driver);
-        listPage.verify();
-        
-        driver.quit();
+        listPage.verifydel();
     }
 
     @Then("User melihat detail data")

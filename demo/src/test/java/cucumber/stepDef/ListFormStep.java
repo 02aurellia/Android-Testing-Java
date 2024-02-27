@@ -105,7 +105,16 @@ public class ListFormStep extends env{
 
     @Then("User berhasil menghapus data")
     public void user_berhasil_menghapus_data() {
-        driver.findElement(By.id("com.example.testingapps:id/data_view")).isDisplayed();
+
+        WebElement toastMsg = driver.findElement(By.xpath("(//android.widget.Toast)"));
+        String message = toastMsg.getText();
+        if (message.contains("Data berhasil di hapus")) {
+            System.out.println("Verify " + message + " berhasil");
+            driver.quit();  
+        } 
+        else {
+            System.out.println("Verify " + message + " tidak berhasil");
+        }
         // driver.quit();
     }
 

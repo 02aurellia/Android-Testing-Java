@@ -75,9 +75,7 @@ public class ListFormStep extends env{
     @Then("User berhasil menghapus data")
     public void user_berhasil_menghapus_data() {
         ListFormPF listPage = new ListFormPF(driver);
-        listPage.verify();
-        
-        driver.quit();
+        listPage.verifydel();
     }
 
     @Then("User melihat detail data")

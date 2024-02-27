@@ -55,6 +55,9 @@ public class IsiFormPF {
         @FindBy(id = "com.example.testingapps:id/data_view")
         WebElement data_view;
 
+        @FindBy(xpath = "(//android.widget.Toast)")
+        WebElement toastMsg;
+
         public IsiFormPF(AndroidDriver driver) {
                 this.driver = driver;
                 PageFactory.initElements(new AjaxElementLocatorFactory(driver,30),this);
@@ -89,6 +92,8 @@ public class IsiFormPF {
         }
 
         public void verify(){
+                String message = toastMsg.getText();
+                System.out.println(message);
                 data_view.isDisplayed();
                 driver.quit();
         }

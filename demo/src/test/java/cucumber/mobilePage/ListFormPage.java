@@ -21,6 +21,7 @@ public class ListFormPage {
         By data1 = By.id("android:id/text1");
         By jk_lk = By.id("com.example.testingapps:id/jk_lk");
         By jk_pr = By.id("com.example.testingapps:id/jk_pr");
+        By toastMsg = By.xpath("(//android.widget.Toast)");
 
         public ListFormPage(AndroidDriver driver) {
                 this.driver = driver;
@@ -52,6 +53,13 @@ public class ListFormPage {
 
         public void verify() {
                 driver.findElement(data_view).isDisplayed();
+                WebElement toast = driver.findElement(toastMsg);
+                String message = toast.getText();
+                System.out.println(message);
+        }
+
+        public void verifyback() {
+                driver.findElement(data_view).isDisplayed();
         }
 
         public void klikBatal() {
@@ -61,5 +69,17 @@ public class ListFormPage {
 
         public void klikHapus() {
                 driver.findElement(btnDelete).click();
+        }
+
+        public void verifydel() {
+                WebElement toastMsg = driver.findElement(By.xpath("(//android.widget.Toast)"));
+                String message = toastMsg.getText();
+                if (message.contains("Data berhasil di hapus")) {
+                        System.out.println("Verify " + message + " berhasil");
+                        driver.quit();  
+                } 
+                else {
+                        System.out.println("Verify " + message + " tidak berhasil");
+                }
         }
 }
